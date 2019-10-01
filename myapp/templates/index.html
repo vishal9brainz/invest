@@ -1,0 +1,206 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block head %}
+    <title>Location</title>
+    {% endblock %}
+    <link rel="stylesheet" href="/static/css/main.css" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<style>
+   
+    body,
+    html {
+        height: 100%;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .bg-image {
+        /* The image used */
+        background-image: url("/static/images/wallpaper.jpg");
+
+        /* Add the blur effect */
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
+
+        /* Full height */
+        height: max-content;
+        min-height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .bg-text {
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/opacity/see-through */
+        color: white;
+        font-weight: bold;
+        border: 1px solid #f1f1f1;
+        position: absolute;
+        top: 50%;
+        height: max-content;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+
+
+    }
+</style>
+
+<body class="" style="">
+    <div class="bg-image"></div>
+    <div class="" style="">
+        <div class=""
+            style="background-color:#ffffff;top:0px;position: absolute;width: 100%;padding-left:50px;padding-right: 50px;">
+            <nav class="navbar navbar-dark bg-transparent" style="height:60px;">
+                <a class="" href="/" style="border: 2px;">
+                    <button class="btn btn-sm btn-outline-primary admin-header-button"
+                    style="border-radius: 6%; padding: 0 15px;"
+                        type="submit">
+                        <h1>Home</h1>
+                    </button></a>
+                <a class="" href="/adminpanel" style="border: 2px;">
+                    <button class="btn btn-sm btn-outline-primary"
+                    style="border-radius: 6%; padding: 0 15px;"
+                        type="submit">
+                        <h1>adminpanel</h1>
+                    </button></a>
+                <a class="" href="/AllDatalist/" style="border: 2px;">
+                    <button class="btn btn-sm btn-outline-primary"
+                    style="border-radius: 6%; padding: 0 15px;" 
+                    type="submit">
+                        <h1>All Data Cards</h1>
+                    </button></a>
+                <a class="" href="/Approvedlist/" style="border: 2px;">
+                    <button class="btn btn-sm btn-outline-primary"
+                    style="border-radius: 6%; padding: 0 15px;"
+                        type="submit">
+                        <h1>Approved Cards</h1>
+                    </button></a>
+                <a class="" href="/UnApprovedlist/" style="border: 2px;">
+                    <button
+                    style="border-radius: 6%; padding: 0 15px;"
+                        class="btn btn-sm btn-outline-primary" type="submit">
+                        <h1>UnApproved Cards</h1>
+                    </button></a>
+                <a class="" href="/adminpanel/0/" style="border: 2px;">
+                    <button class="btn btn-sm btn-outline-primary"
+                    style="border-radius: 6%; padding: 0 15px;"
+                    type="submit">
+                        <h1>Add Place</h1>
+                    </button></a>
+                <a class="" href="/csvUpload/" style="border: 2px;">
+                    <button class="btn btn-sm btn-outline-primary"
+                    style="border-radius: 6%; padding: 0 15px;"
+                        type="submit">
+                        <h1>upload csv</h1>
+                    </button></a>
+                <a class="" href="/admin/logout/" style="border: 2px;">
+                    <button class="btn btn-sm btn-outline-primary"
+                    style="border-radius: 6%; padding: 0 15px;"
+                        type="submit">
+                        <h1>Logout</h1>
+                    </button></a>
+            </nav>
+
+            <div class="alert alert-info container" style="text-align: center;width: max-content;height: max-content;">
+                <strong>{{ message }}</strong>
+            </div>
+        </div>
+        <!--
+            color: white;
+    font-weight: bold;
+    /* border: 1px solid #f1f1f1; */
+    position: absolute;
+    top: 50%;
+    height: max-content;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    either use bg-text
+        -->
+        <div class="container " style="width:100%;padding-top: 100px;color: white;position: absolute;top: 50%;height: max-content;left: 50%;
+         transform: translate(-50%, -50%); z-index: 2;width: 80%; padding: 20px; text-align: center;">
+            <div class="row" style="width:100%;">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12" style="text-align: center">
+                            {% block title %}
+                            <h1>Location Search</h1>
+                            {% endblock %}
+                        </div>
+                    </div>
+
+                    {% block body %}
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10 search-bar" style="padding: 11px;                    
+                    height: 50px;
+                    border-radius: 50px;
+                    background-color: #f0efec;
+                    padding-left: 20px;
+                    padding-right: 20px;">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" name="search" id="search"
+                                placeholder="Enter a Place Title" style="
+                                    height: 28px;
+                                    text-align: center;
+                                    font-size: initial;
+                                    font-style: oblique;
+                                    background-color: #f0efec;
+                                    border: 0px;
+                                    backface-visibility: 100%" />
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    {% endblock %}
+                    <div class="row">
+                        <div class="col-12" style="width:100%;color: black;text-align: left;">
+                            <ul id='search-results'>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Bootstrap scripts. -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/static/js/admin_script.js"></script>
+
+</html>

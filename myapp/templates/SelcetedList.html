@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body class="">
+        <div class=""  style="background-color:#ffffff;">
+                <nav class="navbar navbar-dark bg-transparent" style="height:60px;">
+                    <a class="" href="/" style="border: 2px;">
+                        <button class="btn btn-sm btn-outline-primary admin-header-button"
+                        style="border-radius: 6%; padding: 0 15px;"
+                            type="submit">
+                            <h3>Home</h3>
+                        </button></a>
+                    <a class="" href="/adminpanel" style="border: 2px;">
+                        <button class="btn btn-sm btn-outline-primary"
+                        style="border-radius: 6%; padding: 0 15px;"
+                            type="submit">
+                            <h3>Admin Panel</h3>
+                        </button></a>
+                    <a class="" href="/AllDatalist/" style="border: 2px;">
+                        <button class="btn btn-sm btn-outline-primary"
+                        style="border-radius: 6%; padding: 0 15px;" 
+                        type="submit">
+                            <h3>All Data Cards</h3>
+                        </button></a>
+                    <a class="" href="/Approvedlist/" style="border: 2px;">
+                        <button class="btn btn-sm btn-outline-primary"
+                        style="border-radius: 6%; padding: 0 15px;"
+                            type="submit">
+                            <h3>Approved Cards</h3>
+                        </button></a>
+                    <a class="" href="/UnApprovedlist/" style="border: 2px;">
+                        <button
+                        style="border-radius: 6%; padding: 0 15px;"
+                            class="btn btn-sm btn-outline-primary" type="submit">
+                            <h3>UnApproved Cards</h3>
+                        </button></a>
+                    <a class="" href="/adminpanel/0/" style="border: 2px;">
+                        <button class="btn btn-sm btn-outline-primary"
+                        style="border-radius: 6%; padding: 0 15px;"
+                        type="submit">
+                            <h3>Add Place</h3>
+                        </button></a>
+                    <a class="" href="/csvUpload/" style="border: 2px;">
+                        <button class="btn btn-sm btn-outline-primary"
+                        style="border-radius: 6%; padding: 0 15px;"
+                            type="submit">
+                            <h3>Upload CSV</h3>
+                        </button></a>
+                    <a class="" href="/admin/logout/" style="border: 2px;">
+                        <button class="btn btn-sm btn-outline-primary"
+                        style="border-radius: 6%; padding: 0 15px;"
+                            type="submit">
+                            <h3>Logout</h3>
+                        </button></a>
+                </nav>
+        
+                <div class="alert alert-info container" style="text-align: center;width: max-content;height: max-content;">
+                    <strong>{{ message }}</strong>
+                </div>
+            </div>
+    <div class="row">
+        <div class="col-12" style="width:100%;color: black;text-align: left;">
+            <ul id='search-results'>
+                {% for result in results %}
+                <div class="" style="padding: 20px; float: left; ">
+                    <div class="card" style="width: 18rem;height: 300px;border-radius: 15px!important;
+                    border-top-left-radius: 15px !important;
+                    border-top-right-radius: 15px !important;
+                    border-bottom-right-radius: 15px !important;
+                    border-bottom-left-radius: 15px !important;
+                    box-shadow: 0 6px 16px 0 rgba(0,0,0,.15),0 6px 16px 0 rgba(0,0,0,.12)!important;">
+                        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                        <div class="card-body"
+                            style="height: 100%;background-image: url(/static/images/imagedefault.jpg);background-size: auto;background-repeat: no-repeat;">
+                            <h5 class="card-title">{{ result.title }}</h5>
+                            <p class="card-text">{{ result.description }}</p>
+                            <div class="" style="position: absolute;right: 20px;bottom: 20px;">
+                                <a href="{{ result.id }}/" class="btn btn-primary">Explore more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

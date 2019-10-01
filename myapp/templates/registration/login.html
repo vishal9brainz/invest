@@ -1,0 +1,42 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+
+            <!-- Login Form -->
+            <form method="POST" action="{% url 'index' %}">
+                {% csrf_token %}
+                <p>
+                <div class="alert alert-info container"
+                    style="text-align: center;width: max-content;height: max-content;">
+                    <strong>{{ message }}</strong>
+                </div>
+                </p>
+                <label for="{{ form.username.id_for_label }}">UserName</label>
+                {{ form.username }}
+                <label for="{{ form.password.id_for_label }}">Password</label>
+                {{ form.password }}
+                <input type="submit" value="Log in">
+            </form>
+        </div>
+    </div>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>

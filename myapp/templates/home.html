@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <!-- Stylesheets. -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,700&amp;subset=hebrew" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://npcoding.investmart.initech.host/static/CACHE/css/8411ca4ee037.css" type="text/css" />
+
+
+</head>
+
+<body>
+    <style>
+        #map {
+            min-height: 640px;
+            height: 150%;
+            position: fixed;
+            overflow: 100%;
+        }
+
+        html,
+        body {
+
+            height: 100%;
+            max-width: 100%;
+            margin: 0px;
+
+        }
+    </style>
+  <nav class=" navbar navbar-light fixed-top" role="navigation" style="max-width: 100%" aria-label="main navigation">
+        <div class="mobile menu-link d-block d-lg-none">
+                <a href="#navigation" title="close menu">
+                <i class="fa fa-bars"></i>
+                </a>
+             </div>
+             <div class="right d-none d-lg-flex">
+                    <!-- <form action="/language-change/" method="post" name="language-picker"><input type='hidden' name='csrfmiddlewaretoken' value='v7q6uCT4CCSRsBN2W3djhRlD34vtdo4EMWARQNb5V9UANy3ZdF0bgRDV3NOlaKuQ' />
+                       <input name="next" type="hidden" value="https://npcoding.investmart.initech.host/" />
+                       <input name="language" type="hidden" value="en">
+                    </form> -->
+                    <div class="dropdown" id="language-picker">
+                       <button class="btn btn-secondary dropdown-toggle" href="#" role="button" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <img src="https://npcoding.investmart.initech.host/static/img/flags/en.png" alt="en">
+                       </button>
+                       <div class="dropdown-menu" aria-labelledby="language-dropdown">
+                          <button class="dropdown-item" href="#" data-value="he">
+                          <img src="https://npcoding.investmart.initech.host/static/img/flags/he.png" alt="he">
+                          </button>
+                       </div>
+                    </div>
+                    <ul class="desktop-menu d-none d-lg-flex navbar-nav flex-row align-items-center right" role="menu">
+                       <li class="nav-item dropdown" role="menuitem">
+                          <a class="nav-link dropdown-toggle" href="#" id="About-menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About">
+                          About
+                          </a>
+                          <div class="dropdown-menu position-absolute" aria-labelledby="About-menu" role="menu">
+                             <a class="dropdown-item" role="menuitem" href="https://en.npcoding.investmart.initech.host/about-en/" title="Who We Are">Who We Are</a>
+                             <a class="dropdown-item" role="menuitem" href="https://en.npcoding.investmart.initech.host/our-values-en/" title="Our Values">Our Values</a>
+                             <a class="dropdown-item" role="menuitem" href="https://en.npcoding.investmart.initech.host/the-investmart-platform-en/" title="The Platform">The Platform</a>
+                             <a class="dropdown-item" role="menuitem" href="https://en.npcoding.investmart.initech.host/management-services-en/" title="Management Services">Management Services</a>
+                             <a class="dropdown-item" role="menuitem" href="https://en.npcoding.investmart.initech.host/help-centre-faqs-en/" title="FAQs">FAQs</a>
+                          </div>
+                       </li>
+                       <li class="nav-item" role="menuitem">
+                          <a href="https://en.npcoding.investmart.initech.host/how-it-works-en/" title="How it Works">How it Works</a>
+                       </li>
+                       <li class="nav-item" role="menuitem">
+                          <a href="https://en.goinvestmart.com/contact/" title="‏Contact us">‏Contact us</a>
+                       </li>
+                    </ul>
+                 </div>
+                 <div class="navbar-brand text-center m-0">
+                    <a href="/">
+                    <img src="https://npcoding.investmart.initech.host/static/img/logo.svg" alt="Investmart">
+                    </a>
+                 </div>     
+                 <div class="left d-none d-lg-flex">
+                        <ul class="desktop-menu d-none d-lg-flex navbar-nav flex-row align-items-center left" role="menu">
+                           <li class="nav-item dropdown" role="menuitem">
+                              <a class="nav-link dropdown-toggle" href="#" id="Learn-menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Learn">
+                              Learn
+                              </a>
+                              <div class="dropdown-menu position-absolute" aria-labelledby="Learn-menu" role="menu">
+                                 <a class="dropdown-item" role="menuitem" href="https://en.npcoding.investmart.initech.host/real-estate-calculation-excel-templates/" title="Calculators">Calculators</a>
+                                 <a class="dropdown-item" role="menuitem" href="https://en.npcoding.investmart.initech.host/investmart-ebook-your-guide-overseas-property-markets/" title="Investing Ebook">Investing Ebook</a>
+                                 <a class="dropdown-item" role="menuitem" href="https://en.npcoding.investmart.initech.host/blog-en/" title="‏Investmart Blog">‏Investmart Blog</a>
+                              </div>
+                           </li>
+                           <li class="nav-item" role="menuitem">
+                              <a href="https://en.npcoding.investmart.initech.host/property-market-analysis-en/" title="Analyse">Analyse</a>
+                           </li>
+                           <li class="nav-item" role="menuitem">
+                              <a href="https://en.npcoding.investmart.initech.host/projects-en/" title="Invest">Invest</a>
+                           </li>
+                        </ul>
+                        <div class="auth-links">
+                           <a class="d-none d-lg-inline in-simple-link px-1 text-dark" href="/accounts/sign-in/">Sign in</a>
+                           <a class="btn btn-outline-dark d-none d-lg-inline" href="/accounts/sign-up/">Sign up</a>
+                        </div>
+                     </div>
+     </nav>
+    <div class="container-fluid" style="height: 100%;">
+        <div class="row">
+            <div class="col-0"></div>
+            <div class="col-12" id="map">
+            </div>
+            <div class="col-0"></div>
+        </div>
+        <div class="row">
+                <div class=""
+                style="top:96px;position: absolute;width: 100%;padding-left:50px;padding-right: 50px;text-align: end">
+                <nav class="navbar navbar-dark bg-transparent" style="height:60px;">
+                    <a class="" href="/" style="border: 2px;"></a>
+                    <a class="" href="/adminpanel" style=""><button class="btn btn-sm btn-outline-secondary"
+                            style="background-color:aliceblue" type="submit">
+                            <h3>Admin panel</h3>
+                        </button></a>
+                </nav>
+            </div>
+        </div>
+        <div class="" style="position: absolute;top:200px;width: 100%;">
+            <div class="container" style="width:60%;height:auto;padding: 30px;border-radius: 50px;">
+                    <!-- background-color: #9dbfb396; -->
+                <div class="row">
+                    <div class="col-1">
+                    </div>
+                    <div class="col-10" >
+                        <!-- <h1 class="display-4" style="text-align:center;">My Map</h1> -->
+                    </div>
+                    <div class="col-1">
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-8">
+                        {% csrf_token %}
+                        <input class="form-control" id="search" name="search" type="text" placeholder="Search..." />
+                    </div>
+                    <div class="col-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color: lightgrey;">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div class="search-results " style="width:100%;">
+                    <div id='search-results'>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        
+        <footer class="container-fluid footer" style="min-height: 0% !important" >
+                <div class="row">
+                   <div class="contact col-12 col-lg-3 d-flex align-items-start align-items-lg-center justify-content-center flex-lg-row">
+                      <a class="phone" href="tel:+972 3-611-1888">
+                      +972 3-611-1888 <i class="fa fa-phone"></i>
+                      </a>
+                      <div class="mail">
+                         <a href="/contact/">
+                         <i class="fa fa-envelope"></i>
+                         </a>
+                      </div>
+                      <div class="fb-url">
+                         <a target="_blank" href="https://www.facebook.com/InvestmartUK/">
+                         <i class="fa fa-facebook-square"></i>
+                         </a>
+                      </div>
+                   </div>
+                   <div class="menu col-12 col-lg-6" role="navigation">
+                      <div class="row">
+                         <div class="col-12 d-flex flex-row flex-wrap align-items-start align-items-lg-center justify-content-center text-center">
+                            <a href="https://en.npcoding.investmart.initech.host/terms-en/" title="Terms &amp; Conditions">Terms &amp; Conditions</a>
+                            <a href="https://en.npcoding.investmart.initech.host/privacy-policy-en/" title="Privacy Policy">Privacy Policy</a>
+                         </div>
+                         <div class="col-12">
+                            <p class="text-center">All rights reserved to Investmart ltd. (© 2018)</p>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center">
+                      <a class="brand" href="/">
+                      <img src="https://npcoding.investmart.initech.host/static/img/logo.svg" alt="Investmart">
+                      </a>
+                   </div>
+                </div>
+             </footer>
+    </div>
+
+    <!-- Bootstrap scripts. -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- Google Maps scripts. -->
+    <script src="static/js/script.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEHCdvSJx0OAfeOp-MkfXBXVMzOrH64OY&callback=createMap&libraries=places"
+        async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="static/js/ajax_script.js"></script>
+    <script>
+            $(".mobile.menu-link").on("click", function(){
+             $('#mobile-menu').addClass('open');
+            });
+            
+            $("#close-mobile-menu").on("click", function(){
+             $('#mobile-menu').removeClass('open');
+            });
+   </script>
+   <script type="text/javascript">
+      // $(document).on('keyup','#search',function(){
+
+      //    $.ajax({
+      //       url: "/getPlaces",
+      //       type: "GET",
+      //       data: {
+      //           title:$(this).val()
+      //       },
+      //    })
+      //    .done(function(response){
+      //       var lat=$.parseJSON(response)
+      //       console.log(lat.images);
+      //       var path="static/media/"+lat.images;
+      //       var data="<img src='"+path+"' style='width:192px; height=100px;margin:-273px 852px 0px;'>";
+      //       $('.card-body').append(data);
+      //       var myLatLng = {lat: parseFloat(lat.long), lng: parseFloat(lat.lat)};
+      //       console.log(myLatLng);
+      //       var map = new google.maps.Map(document.getElementById('map'), {
+      //    		zoom: 16,
+      //    		center: myLatLng
+      //  		});
+      //  		var marker;
+      // 		marker = new google.maps.Marker({
+      //    		position: myLatLng,
+      //    		map: map
+      //  		});
+      //    })
+      //    .fail(function() {
+      //       console.log("error");
+      //    })
+      //    .always(function() {
+      //       console.log("complete");
+      //   });
+         
+      // });
+ 
+   </script>
+</body>
+
+</html>

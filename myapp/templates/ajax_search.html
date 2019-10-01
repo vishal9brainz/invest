@@ -1,0 +1,57 @@
+{% block content %}
+{% for article in articles %}
+<div class="" style="padding: 20px; float: left;width: 100% ">
+    <div class="card" style="height: 300px;width: 100%">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <!-- <div class="card-body" style="height: 100%;">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <p class="card-text" style="width: 700px;height:150px;">{{ article.description }}</p> -->
+
+            <!-- <div class="" style="position: absolute;right: 20px;bottom: 20px;">
+                <a href="home/{{ article.id }}/" class="btn btn-primary">Explore more</a>
+            </div> -->
+            <div class="row">
+                <div class="col" style="padding: 30px;">
+                    <h5 class="card-title"><b>{{ article.title }}</b></h5>
+                    <p class="card-text">{{ article.description }}</p>
+                </div>
+                <div class="col">
+                        <div class="row">
+                                <div class="col">
+                                        <img src="media/{{ images }}" style="height: 196px;
+                                        width: 196px;margin-top: 30px;
+                                        float: left;">
+                                </div>
+                                <div  class="col">
+                                        <video controls style="width:196px;height: 196px;margin-top: 18px;float: left;">
+                                                <source src="media/{{ video }}" type="video/mp4">
+                                        </video>
+                                </div>
+                                <input type="hidden" id="lat" value="{{ lat }}">
+                                <input type="hidden" id="long" value="{{ long }}">
+                        </div>                                                 
+                </div>
+              </div>
+              <div class="row" style="justify-content: flex-end;
+              padding-right: 32px;margin-top: 18px;" >
+                <a href="home/{{ article.id }}/" class="btn btn-primary">Explore more</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var lat=$('#lat').val();
+        var long=$('#long').val();
+        var myLatLng = {lat: parseFloat(lat), lng: parseFloat(long)};
+        var map = new google.maps.Map(document.getElementById('map'), {
+         		zoom: 16,
+         		center: myLatLng
+       		});
+       		var marker;
+      		marker = new google.maps.Marker({
+         		position: myLatLng,
+         		map: map
+       		});
+    </script>
+</div>
+{% endfor %}
+{% endblock %}

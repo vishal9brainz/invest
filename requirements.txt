@@ -1,0 +1,5 @@
+Django
+db-sqlite3
+numpy
+pandas
+django-easy-maps

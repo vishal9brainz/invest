@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<style>
+ h1{
+        margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    }
+    label {
+    font-size: 20px !important;
+    margin-bottom: 0px !important;
+    font-weight: 600 !important;
+}
+.submit-btn{
+    background-color: #007bff;
+    border-radius: 28px;
+    border: 1px solid #007bff;
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    font-size: 17px;
+    height: 43px;
+    margin-top: 12px;
+    padding: 0px 31px;
+    text-decoration: none;
+    text-shadow: rgb(47, 102, 39) 0px 1px 0px;
+}
+</style>
+<body>
+    <div class=""  style="background-color:#ffffff;">
+        <nav class="navbar navbar-dark bg-transparent" style="height:60px;">
+            <a class="" href="/" style="border: 2px;">
+                <button class="btn btn-sm btn-outline-primary admin-header-button"
+                style="border-radius: 6%; padding: 0 15px;"
+                    type="submit">
+                    <h3>Home</h3>
+                </button></a>
+            <a class="" href="/adminpanel" style="border: 2px;">
+                <button class="btn btn-sm btn-outline-primary"
+                style="border-radius: 6%; padding: 0 15px;"
+                    type="submit">
+                    <h3>Admin Panel</h3>
+                </button></a>
+            <a class="" href="/AllDatalist/" style="border: 2px;">
+                <button class="btn btn-sm btn-outline-primary"
+                style="border-radius: 6%; padding: 0 15px;" 
+                type="submit">
+                    <h3>All Data Cards</h3>
+                </button></a>
+            <a class="" href="/Approvedlist/" style="border: 2px;">
+                <button class="btn btn-sm btn-outline-primary"
+                style="border-radius: 6%; padding: 0 15px;"
+                    type="submit">
+                    <h3>Approved Cards</h3>
+                </button></a>
+            <a class="" href="/UnApprovedlist/" style="border: 2px;">
+                <button
+                style="border-radius: 6%; padding: 0 15px;"
+                    class="btn btn-sm btn-outline-primary" type="submit">
+                    <h3>UnApproved Cards</h3>
+                </button></a>
+            <a class="" href="/adminpanel/0/" style="border: 2px;">
+                <button class="btn btn-sm btn-outline-primary"
+                style="border-radius: 6%; padding: 0 15px;"
+                type="submit">
+                    <h3>Add Place</h3>
+                </button></a>
+            <a class="" href="/csvUpload/" style="border: 2px;">
+                <button class="btn btn-sm btn-outline-primary"
+                style="border-radius: 6%; padding: 0 15px;"
+                    type="submit">
+                    <h3>Upload CSV</h3>
+                </button></a>
+            <a class="" href="/admin/logout/" style="border: 2px;">
+                <button class="btn btn-sm btn-outline-primary"
+                style="border-radius: 6%; padding: 0 15px;"
+                    type="submit">
+                    <h3>Logout</h3>
+                </button></a>
+        </nav>
+
+        <div class="alert alert-info container" style="text-align: center;width: max-content;height: max-content;">
+            <strong>{{ message }}</strong>
+        </div>
+    </div>
+    <div class="container" >
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <div class="col-12" style="text-align: center;background-color: lightblue;padding: 56px;">
+                <div class="">
+                    <form method="POST" action="{% url 'upload' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="row" style="padding-bottom: 5px;">
+                            <div class="fieldWrapper">
+                                {{ form.file.errors }}
+                                <label for="{{ form.file.id_for_label }}">Choose CSV :</label>
+                                {{ form.file }}
+                                {{ form.help_text }}
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 5px;">
+                            <div class="fieldWrapper">
+                                {{ form.header.errors }}
+                                <label for="{{ form.header.id_for_label }}">Does it contain Header
+                                    ?:</label>
+                                {{ form.header }}
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 5px;">
+                            <div class="fieldWrapper">
+                                {{ form.title.errors }}
+                                <label for="{{ form.title.id_for_label }}">Does it contain Title Column
+                                    ?</label>
+                                {{ form.title }}
+                            </div>
+                        </div>
+                        <div class="row" style="padding-bottom: 5px;">
+                            <div class="fieldWrapper">
+                                {{ form.description.errors }}
+                                <label for="{{ form.description.id_for_label }}">Does it contain description
+                                    Column
+                                    ?</label>
+                                {{ form.description }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12" onclick="">
+                                <input type="submit"  class="submit-btn">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

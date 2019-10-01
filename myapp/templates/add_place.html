@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Place</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+#id_title{
+ 
+    display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#id_description{
+    display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+label {
+    font-size: 20px !important;
+    margin-bottom: 0px !important;
+    font-weight: 600 !important;
+}
+.submit-btn{
+    background-color: #007bff;
+    border-radius: 28px;
+    border: 1px solid #007bff;
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    font-size: 17px;
+    height: 43px;
+    margin-top: 12px;
+    padding: 0px 31px;
+    text-decoration: none;
+    text-shadow: rgb(47, 102, 39) 0px 1px 0px;
+}
+   
+</style>
+<body style="background-color:lightgrey;">
+    <div class="conatiner" style="">
+            <div class=""  style="background-color:#ffffff;">
+                    <nav class="navbar navbar-dark bg-transparent" style="height:60px;">
+                        <a class="" href="/" style="border: 2px;">
+                            <button class="btn btn-sm btn-outline-primary admin-header-button"
+                            style="border-radius: 6%; padding: 0 15px;"
+                                type="submit">
+                                <h3>Home</h3>
+                            </button></a>
+                        <a class="" href="/adminpanel" style="border: 2px;">
+                            <button class="btn btn-sm btn-outline-primary"
+                            style="border-radius: 6%; padding: 0 15px;"
+                                type="submit">
+                                <h3>Admin Panel</h3>
+                            </button></a>
+                        <a class="" href="/AllDatalist/" style="border: 2px;">
+                            <button class="btn btn-sm btn-outline-primary"
+                            style="border-radius: 6%; padding: 0 15px;" 
+                            type="submit">
+                                <h3>All Data Cards</h3>
+                            </button></a>
+                        <a class="" href="/Approvedlist/" style="border: 2px;">
+                            <button class="btn btn-sm btn-outline-primary"
+                            style="border-radius: 6%; padding: 0 15px;"
+                                type="submit">
+                                <h3>Approved Cards</h3>
+                            </button></a>
+                        <a class="" href="/UnApprovedlist/" style="border: 2px;">
+                            <button
+                            style="border-radius: 6%; padding: 0 15px;"
+                                class="btn btn-sm btn-outline-primary" type="submit">
+                                <h3>UnApproved Cards</h3>
+                            </button></a>
+                        <a class="" href="/adminpanel/0/" style="border: 2px;">
+                            <button class="btn btn-sm btn-outline-primary"
+                            style="border-radius: 6%; padding: 0 15px;"
+                            type="submit">
+                                <h3>Add Place</h3>
+                            </button></a>
+                        <a class="" href="/csvUpload/" style="border: 2px;">
+                            <button class="btn btn-sm btn-outline-primary"
+                            style="border-radius: 6%; padding: 0 15px;"
+                                type="submit">
+                                <h3>Upload CSV</h3>
+                            </button></a>
+                        <a class="" href="/admin/logout/" style="border: 2px;">
+                            <button class="btn btn-sm btn-outline-primary"
+                            style="border-radius: 6%; padding: 0 15px;"
+                                type="submit">
+                                <h3>Logout</h3>
+                            </button></a>
+                    </nav>
+            
+                    <div class="alert alert-info container" style="text-align: center;width: max-content;height: max-content;padding: 0px ;border: none;">
+                        <strong>{{ message }}</strong>
+                    </div>
+                </div>
+        <form method="POST" action="{% url 'Insert_data' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="conatiner" style="width: 100% ;padding-left:10%;padding-right:10%;padding-top:5%; ">
+                <div class="row" style="background-color: lightblue;padding: 50px">
+                    <div class="col-1"></div>
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-12">
+                                {{ res.data_form.non_field_errors }}
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ res.data_form.title.errors }}
+                                        <label for="{{ res.data_form.title.id_for_label }}"> Title :</label>
+                                        <br/>
+                                        {{ res.data_form.title }}
+                                        {{ res.data_form.help_text }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                {{ res.data_form.non_field_errors }}
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ res.data_form.description.errors }}
+                                        <label for="{{ res.data_form.description.id_for_label }}"> Description :</label>
+                                        <br/>
+                                        <textarea rows="4" name="description" value="{{  res.data_form.help_text }}"
+                                        maxlength="1000" required id="id_description" cols="50">
+                                            </textarea>
+                                        <!-- <input type="text" > -->
+                                        <!-- {{ res.data_form.help_text }} -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                {{ res.data_form.non_field_errors }}
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ res.data_form.latitude.errors }}
+                                        <label for="{{ res.data_form.latitude.id_for_label }}"> Latitude 
+                                            :</label><br>
+                                            {{ res.data_form.latitude }}
+                                            {{ res.data_form.help_text }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                {{ res.data_form.non_field_errors }}
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ res.data_form.longitude.errors }}
+                                        <label for="{{ res.data_form.longitude.id_for_label }}"> Longitude 
+                                            :</label><br>
+                                        <!-- <input type="text" name="longitude" value="{{ res.value.longitude }}"
+                                            maxlength="1000" required id="id_longitude "> -->
+                                            {{ res.data_form.longitude }}
+                                            {{ res.data_form.help_text }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-12">
+                                <div class="button-container">
+                                    <a style="text-decoration: none" href="{% url 'index' %}">
+                                        <button type="button" class="button" value="Go back">Go Back</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- {{ res.form.as_ul }} -->
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        <input type="hidden" id="id_place_id" name="place_id"
+                                            value={{ res.form.place_id.value }}>
+                                    </div>
+                                </div>
+
+                                {{ res.form.non_field_errors }}
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ res.form.file.errors }}
+                                        <label for="{{ res.form.file.id_for_label }}">Choose Image/Video :</label>
+                                        {{ res.form.file }}
+                                        {{ res.form.help_text }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ res.form.img.errors }}
+                                        <label for="{{ res.form.img.id_for_label }}">Is this a Image ?:</label>
+                                        {{ res.form.img }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ res.form.vdo.errors }}
+                                        <label for="{{ res.form.vdo.id_for_label }}">Is this a Video ?</label>
+                                        {{ res.form.vdo }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="submit" class="submit-btn" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                        <br>
+                    <h3>Find Your Longitude And Latitude <a href="https://www.latlong.net/">click Here..</a></h3>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
