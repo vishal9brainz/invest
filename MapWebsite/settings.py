@@ -1,3 +1,4 @@
+import django_heroku
 """
 Django settings for MapWebsite project.
 
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'easy_maps',
-   'xframeoptions',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'xframeoptions.middleware.Header',
 ]
 MIDDLEWARE_CLASSES = (
     'xframeoptions.middleware.Header',
@@ -140,3 +139,4 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL = 'adminpanel'
 LOGOUT_REDIRECT_URL = 'home'
+django_heroku.settings(locals())
