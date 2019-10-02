@@ -1,6 +1,28 @@
 {% block content %}
 {% for article in articles %}
 <div class="" style="padding: 20px; float: left;width: 100% ">
+    <div class="card" style="height: 200px;width: 100%">
+        <div class="row" style="text-align:center;">
+            <div class="col-md-3">
+                <b><strong>Title</strong></b><br>
+                <b>123</b>
+            </div>
+            <div class="col-md-3">
+                <b><strong>Title</strong></b><br>
+                <b>123</b>
+            </div>
+            <div class="col-md-3">
+                <b><strong>Title</strong></b><br>
+                <b>123</b>
+            </div>
+            <div class="col-md-3">
+                <b><strong>Title</strong></b><br>
+                <b>123</b>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="" style="padding: 20px; float: left;width: 100% ">
     <div class="card" style="height: 300px;width: 100%">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <!-- <div class="card-body" style="height: 100%;">
@@ -41,16 +63,54 @@
     <script type="text/javascript">
         var lat=$('#lat').val();
         var long=$('#long').val();
+        var poly;
         var myLatLng = {lat: parseFloat(lat), lng: parseFloat(long)};
+        if(myLatLng !=""){
+            $('#search').hide();    
+        }
         var map = new google.maps.Map(document.getElementById('map'), {
          		zoom: 16,
-         		center: myLatLng
+         		center: myLatLng,
+                mapTypeId: 'terrain'
        		});
-       		var marker;
-      		marker = new google.maps.Marker({
-         		position: myLatLng,
-         		map: map
-       		});
+        
+        var marker = new google.maps.Marker({
+         	position: myLatLng,
+         	map: map
+        });
+        var cityCircle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center:myLatLng,
+            radius: Math.sqrt(1) * 100
+          });
+        // var path = poly.getPath();
+        // var marker = new google.maps.Marker({
+        //     position: event.latLng,
+        //     title: '#' + path.getLength(),
+        //     map: map
+        // });
+       		// var marker;
+      		// marker = new google.maps.Marker({
+         	// 	position: myLatLng,
+         	// 	map: map
+       		// });
+            // var latlng = new google.maps.LatLng(lat,long);
+       		// var geocoder = geocoder = new google.maps.Geocoder();
+       		// geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+            //     if (status == google.maps.GeocoderStatus.OK) {
+            //         if (results[0]) {
+            //         	console.log(results[0].formatted_address);
+    
+            //         }
+            //     }
+            // });
+           
+           // marker.setMap(map);
     </script>
 </div>
 {% endfor %}
