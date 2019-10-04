@@ -340,17 +340,23 @@ def search_titles(request):
     if request.method == 'POST':
         search_text = request.POST['search_text']
         results = myapp.objects.values_list('id').get(title=search_text)
-        images=imageLoc.objects.values_list('imageLocation').get(place_id=results[0])
-        video=VideoLoc.objects.values_list('vedioLocation').get(place_id=results[0])
+        try:
+            res=imageLoc.objects.values_list('imageLocation').get(place_id=results[0])
+            res=res[0]
+        except imageLoc.DoesNotExist:
+            res=""
+        try:
+            types=VideoLoc.objects.values_list('vedioLocation').get(place_id=results[0])
+            types=types[0]
+        except VideoLoc.DoesNotExist:
+            types=""
+       
         response=myapp.objects.values_list('longitude','latitude').get(title=search_text)
     else:
         search_text = ''
     #storing top "6" records containing that search text     
     articles = myapp.objects.filter(title__icontains=str(search_text))[:6]
-    return render_to_response('ajax_search.html',{'articles':articles,'images':images[0],'video':video[0],'lat':response[1],'long':response[0]})         #rendering these results in the Home
-
-
-
+    return render_to_response('ajax_search.html',{'articles':articles,'images':res,'video':types,'lat':response[1],'long':response[0]})         #rendering these results in the Home
 
 #this is Called when a Place card is clicked for more, shows data and images of the particular place ---and user can only add images/videos
 def result(request,num=0,message="Upload Images & Vedios Using the Form above . . ."):

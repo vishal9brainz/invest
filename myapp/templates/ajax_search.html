@@ -1,7 +1,6 @@
 {% block content %}
 {% for article in articles %}
 <div class="" style="padding: 20px; float: left;width: 100% ">
-    <div class="card" style="height: 200px;width: 100%">
         <div class="row" style="text-align:center;">
             <div class="col-md-3">
                 <b><strong>Title</strong></b><br>
@@ -40,14 +39,20 @@
                 <div class="col">
                         <div class="row">
                                 <div class="col">
-                                        <img src="media/{{ images }}" style="height: 196px;
-                                        width: 196px;margin-top: 30px;
-                                        float: left;">
+                                        {% if images %}
+                                        <img src="media/{{ images }}" style="height: 196px;width: 196px;margin-top: 30px;float: left;">
+                                        {% else %}
+        
+                                        {% endif %}
                                 </div>
                                 <div  class="col">
+                                        {% if videos %}
                                         <video controls style="width:196px;height: 196px;margin-top: 18px;float: left;">
                                                 <source src="media/{{ video }}" type="video/mp4">
-                                        </video>
+                                            </video>
+                                        {% else %}
+
+                                        {% endif %}
                                 </div>
                                 <input type="hidden" id="lat" value="{{ lat }}">
                                 <input type="hidden" id="long" value="{{ long }}">
