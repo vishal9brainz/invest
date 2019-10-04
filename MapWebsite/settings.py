@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'i$mgxy!n9^%7f-jy-b#)5q@(vz44x(&$ufd0u)15h_ypz0uz7-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['googlemapproject.herokuapp.com',"127.0.0.1"]
 
