@@ -36,10 +36,45 @@
     </style>
   <nav class=" navbar navbar-light fixed-top" role="navigation" style="max-width: 100%" aria-label="main navigation">
         <div class="mobile menu-link d-block d-lg-none">
-                <a href="#navigation" title="close menu">
+                <a id="open-menu" title="close menu">
                 <i class="fa fa-bars"></i>
                 </a>
              </div>
+             <nav id="mobile-menu" class="d-flex flex-column d-lg-none">
+               <ul>
+                  <li>
+                     <a  id="close-mobile-menu" target="_blank" rel="noopener noreferrer"><i class="fa fa-times" title="close menu"></i></a>
+                  </li>
+                  <li class="sub-menu-title">About</li> 
+                  <li><a class="inner" href="https://en.npcoding.investmart.initech.host/about-en/" title="Who We Are" target="_blank" rel="noopener noreferrer">Who We Are</a></li>
+                  <li><a class="inner" href="https://en.npcoding.investmart.initech.host/our-values-en/" title="Our Values" target="_blank" rel="noopener noreferrer">Our Values</a></li>
+                  <li><a class="inner" href="https://en.npcoding.investmart.initech.host/the-investmart-platform-en/" title="The Platform" target="_blank" rel="noopener noreferrer">The Platform</a></li>
+                  <li><a class="inner" href="https://en.goinvestmart.com/management-services-en/" title="Management Services">Management Services</a></li>
+                  <li><a class="inner" href="https://en.npcoding.investmart.initech.host/help-centre-faqs-en/" title="FAQs" target="_blank" rel="noopener noreferrer">FAQs</a></li>
+                  <li><a href="https://en.npcoding.investmart.initech.host/how-it-works-en/" title="How it Works" target="_blank" rel="noopener noreferrer">How it Works</a></li>
+                  <li><a href="https://en.goinvestmart.com/contact/" title="&rlm;Contact us">&rlm;Contact us</a></li>
+                  <li class="sub-menu-title">Learn</li>
+                  <li><a class="inner" href="https://en.npcoding.investmart.initech.host/real-estate-calculation-excel-templates/" title="Calculators" target="_blank" rel="noopener noreferrer">Calculators</a></li>
+                  <li><a class="inner" href="https://en.npcoding.investmart.initech.host/investmart-ebook-your-guide-overseas-property-markets/" title="Investing Ebook" target="_blank" rel="noopener noreferrer">Investing Ebook</a></li>
+                  <li><a class="inner" href="https://en.npcoding.investmart.initech.host/blog-en/" title="&rlm;Investmart Blog" target="_blank" rel="noopener noreferrer">&rlm;Investmart Blog</a></li>
+                  <li><a href="https://en.npcoding.investmart.initech.host/property-market-analysis-en/" title="Analyse" target="_blank" rel="noopener noreferrer">Analyse</a></li>
+                  <li><a href="https://en.npcoding.investmart.initech.host/projects-en/" title="Invest" target="_blank" rel="noopener noreferrer">Invest</a></li>
+                  <li><a href="/accounts/sign-in/" target="_blank" rel="noopener noreferrer">Sign in</a></li>
+                  <li><a href="/accounts/sign-up/" target="_blank" rel="noopener noreferrer">Sign up</a></li>
+                  <li class="langs">
+                     <div class="dropdown" id="language-picker">
+                        <button class="btn btn-secondary dropdown-toggle" href="#" role="button" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="/static/img/flags/en.png" alt="en">
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="language-dropdown">
+                           <button class="dropdown-item" href="#" data-value="he">
+                           <img src="/static/img/flags/he.png" alt="he">
+                           </button>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
+            </nav>
              <div class="right d-none d-lg-flex">
                     <!-- <form action="/language-change/" method="post" name="language-picker"><input type='hidden' name='csrfmiddlewaretoken' value='v7q6uCT4CCSRsBN2W3djhRlD34vtdo4EMWARQNb5V9UANy3ZdF0bgRDV3NOlaKuQ' />
                        <input name="next" type="hidden" value="https://npcoding.investmart.initech.host/" />
@@ -221,47 +256,13 @@
             });
             
             $("#close-mobile-menu").on("click", function(){
+               
              $('#mobile-menu').removeClass('open');
             });
-   </script>
-   <script type="text/javascript">
-   
-      // $(document).on('keyup','#search',function(){
-
-      //    $.ajax({
-      //       url: "/getPlaces",
-      //       type: "GET",
-      //       data: {
-      //           title:$(this).val()
-      //       },
-      //    })
-      //    .done(function(response){
-      //       var lat=$.parseJSON(response)
-      //       console.log(lat.images);
-      //       var path="static/media/"+lat.images;
-      //       var data="<img src='"+path+"' style='width:192px; height=100px;margin:-273px 852px 0px;'>";
-      //       $('.card-body').append(data);
-      //       var myLatLng = {lat: parseFloat(lat.long), lng: parseFloat(lat.lat)};
-      //       console.log(myLatLng);
-      //       var map = new google.maps.Map(document.getElementById('map'), {
-      //    		zoom: 16,
-      //    		center: myLatLng
-      //  		});
-      //  		var marker;
-      // 		marker = new google.maps.Marker({
-      //    		position: myLatLng,
-      //    		map: map
-      //  		});
-      //    })
-      //    .fail(function() {
-      //       console.log("error");
-      //    })
-      //    .always(function() {
-      //       console.log("complete");
-      //   });
-         
-      // });
- 
+            $("#open-menu").on("click", function(){
+               
+             
+            });
    </script>
 </body>
 

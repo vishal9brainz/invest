@@ -55,12 +55,7 @@ label {
                                 type="submit">
                                 <h3>Home</h3>
                             </button></a>
-                        <a class="" href="/adminpanel" style="border: 2px;">
-                            <button class="btn btn-sm btn-outline-primary"
-                            style="border-radius: 6%; padding: 0 15px;"
-                                type="submit">
-                                <h3>Admin Panel</h3>
-                            </button></a>
+                       
                         <a class="" href="/AllDatalist/" style="border: 2px;">
                             <button class="btn btn-sm btn-outline-primary"
                             style="border-radius: 6%; padding: 0 15px;" 
@@ -165,6 +160,38 @@ label {
                                         <!-- <input type="text" name="longitude" value="{{ res.value.longitude }}"
                                             maxlength="1000" required id="id_longitude "> -->
                                             {{ res.data_form.longitude }}
+                                            {{ res.data_form.help_text }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                {{ res.data_form.non_field_errors }}
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ res.data_form.placetitle.errors }}
+                                        <label for="{{ res.data_form.placetitle.id_for_label }}"> Place Title 
+                                            :</label><br>
+                                        <!-- <input type="text" name="longitude" value="{{ res.value.longitude }}"
+                                            maxlength="1000" required id="id_longitude "> -->
+                                            {{ res.data_form.placetitle }}
+                                            {{ res.data_form.help_text }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                {{ res.data_form.non_field_errors }}
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ res.data_form.placevalue.errors }}
+                                        <label for="{{ res.data_form.placevalue.id_for_label }}"> Place Value 
+                                            :</label><br>
+                                        <!-- <input type="text" name="longitude" value="{{ res.value.longitude }}"
+                                            maxlength="1000" required id="id_longitude "> -->
+                                            {{ res.data_form.placevalue }}
                                             {{ res.data_form.help_text }}
                                     </div>
                                 </div>

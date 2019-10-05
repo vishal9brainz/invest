@@ -220,14 +220,18 @@ def Insert_data(request):
                                 title = data_form.cleaned_data["title"],
                                 description = data_form.cleaned_data["description"],
                                 longitude=data_form.cleaned_data["longitude"],
-                                latitude=data_form.cleaned_data["latitude"]
+                                latitude=data_form.cleaned_data["latitude"],
+                                placevalue=data_form.cleaned_data["placevalue"],
+                                placetitle=data_form.cleaned_data["placetitle"]
                             )
                 else:                                                  #if place id none then add the new data 
                     db_ptr = myapp(
                                 title = data_form.cleaned_data["title"],
                                 description = data_form.cleaned_data["description"],
                                 longitude=data_form.cleaned_data["longitude"],
-                                latitude=data_form.cleaned_data["latitude"]
+                                latitude=data_form.cleaned_data["latitude"],
+                                placevalue=data_form.cleaned_data["placevalue"],
+                                placetitle=data_form.cleaned_data["placetitle"]
                             )
                 db_ptr.save()
 
@@ -271,7 +275,7 @@ def admin_result(request,num=0,message=""):
             form = imgVDFileForm()                                        #loading imgVDFileForm form for taking in new image or vedio input
             message = "Update Place Data Using the Form above . . ." if message == "" else message
 
-            values = { "title" : data.title , "description" : data.description , "place_id" : num ,"message" : message ,"latitude":data.latitude,'longitude':data.longitude}
+            values = { "title" : data.title , "description" : data.description , "place_id" : num ,"message" : message ,"latitude":data.latitude,'longitude':data.longitude,'placetitle':data.placetitle,'placevalue':data.placevalue}
             res = { "data_form" : data_form, "form" : form , "imgData" : imgData, "value":values , "vdoData" : vdoData}
             return render(request,'admin_result.html',{'res':res})        #rendering admin_result.html 
 

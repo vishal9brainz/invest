@@ -1,5 +1,6 @@
 $(function () {
     $('#search').keyup(function () {
+        console.log('key press');
         // called when key is pressed and a ajax request will be called in url "search" with JSon object with nessary details for backend
         if ($('#search').val() != "") {
             $.ajax({

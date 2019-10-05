@@ -7,6 +7,9 @@ class myapp(models.Model):
     description = models.CharField(max_length=1000,default=' ')
     longitude=models.CharField(max_length=1000,default=0)
     latitude=models.CharField(max_length=1000,default=0)
+    placetitle=models.CharField(max_length=1000,default= ' ')
+    placevalue=models.CharField(max_length=1000,default=' ')
+
     class Meta:
         db_table = 'placeDb'
 

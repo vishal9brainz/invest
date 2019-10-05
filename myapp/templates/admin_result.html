@@ -79,6 +79,37 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{ res.data_form.non_field_errors }}
+                                    <div class="row">
+                                        <div class="fieldWrapper">
+                                            {{ res.data_form.placetitle.errors }}
+                                            <label for="{{ res.data_form.placetitle.id_for_label }}"> Place Title
+                                                :</label>
+                                            <input type="text" name="placetitle" value="{{ res.value.placetitle }}"
+                                                maxlength="1000" required id="id_placetitle">
+                                            {{ res.data_form.help_text }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{ res.data_form.non_field_errors }}
+                                    <div class="row">
+                                        <div class="fieldWrapper">
+                                            {{ res.data_form.placevalue.errors }}
+                                            <label for="{{ res.data_form.placevalue.id_for_label }}"> Place Value
+                                                :</label>
+                                            <input type="text" name="placevalue" value="{{ res.value.placevalue }}"
+                                                maxlength="1000" required id="id_placevalue">
+                                            {{ res.data_form.help_text }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </div>
                         <div class="col-6">
@@ -156,7 +187,7 @@
                                 {% for imgvalues in res.imgData %}
                                 <div id={{ imgvalues.id }}card class="" style="padding: 20px; float: left;">
                                     <div class="card"
-                                        style="width: 18rem;height: 300px;border-radius: 50px;background-color: lightgrey">
+                                        style="width: 18rem;min-height: 300px;border-radius: 50px;background-color: lightgrey">
                                         <div class="" style="height: 280px;">
                                             <a href="/static/media/{{ imgvalues.imageLocation  }}">
                                                 <img class="card-img-top"
